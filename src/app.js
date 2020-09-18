@@ -9,6 +9,9 @@ dataService.loadData(frota);
 console.log(dataService.carros);
 console.log(dataService.drones);
 
+for(let e of dataService.erros)
+    console.log(e.messagem, e.data);
+
 
 
 

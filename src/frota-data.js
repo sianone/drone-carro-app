@@ -1,4 +1,4 @@
-//Dados misturados do tipo: drone e tipo: carroro
+//Dados misturados do tipo: drone e tipo: carro
 
 export let frota = [
     {
