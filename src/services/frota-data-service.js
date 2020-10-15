@@ -10,6 +10,26 @@ export class FrotaDataService{
         this.erros = [];
     }
 
+    getCarroPorRegistro (registro){
+        return this.carros.find(function (carro){
+            return carro.registro === registro;
+        });
+    }
+
+    getSortCarroPorRegistro (){
+        return this.carros.sort(function(carro1, carro2){
+            if (carro1.registro < carro2.registro)
+                return -1;
+            if (carro1.registro > carro2.registro)
+                return 1;
+            return 0;
+        });
+    }
+
+    filtroCarroPorMarca (filtro){
+        return this.carros.filter(carro => carro.marca.indexOf(filtro) >=0);
+    }
+
 //Filtro que separa cada Objeto e move pra o array correspondente de seu tipo
     loadData(frota){
         for(let data of frota){
@@ -18,9 +38,9 @@ export class FrotaDataService{
                     if (this.validacaoCarroDados(data)){
                         let carro = this.loadCarro(data);
                         if (carro)
-                        this.carros.push(carro);
+                            this.carros.push(carro);
                     }else{
-                        let e = new DataErro('Campos do tipo carro não foram validos', data);
+                        let e = new DataErro('O carro não pode ser validado', data);
                         this.erros.push(e);
                     }
                     break;
@@ -61,7 +81,7 @@ export class FrotaDataService{
         let temErros = false;
         for(let campo of camposObrigatorios){
             if (!carro[campo]){
-                this.erros.push( new DataErro(`Campo invalido: ${campo}`, carro));
+                this.erros.push( new DataErro(`O campo "${campo}" não foi identificado`, carro));
                 temErros = true;
             }
         }
