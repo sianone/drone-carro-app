@@ -14,13 +14,16 @@ export class ElementoBase {
 
     criarElemento(){
         let s = this.getElementoString();
+        //elemento criado no jquery
         this.elemento = $(s);
     }
 
+    // método para 'forçar' classes filhas a criar o método com o mesmo nome aka override
     getElementoString(){
-        throw 'Override getElementoString() no ElementoBase';
+        throw 'Precisa de Override: getElementoString()';
     }
 
+    //Elementos MDL (module) criados dinâmicamente precisam disso para serem renderizados corretamente.
     habilitarJS(){
         componentHandler.upgradeElement(this.elemento[0]);
     }
