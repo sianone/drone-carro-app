@@ -20,7 +20,8 @@ export class TabelaDados extends ElementoBase{
             trTags += '<tr>';
             let td= '';
             for(let propriedade of this.headers){
-                let campo = linha[propriedade.toLowerCase()];
+                let prep = propriedade.replace(/\s+/g,'');
+                let campo = linha[prep.toLowerCase()];
                 trTags += `<td class="mdl-data-table__cell--non-numeric">
                             ${campo}
                             </td>`;

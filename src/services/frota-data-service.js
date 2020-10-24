@@ -71,7 +71,7 @@ export class FrotaDataService{
 
     loadDrone(drone){
         let d = new Drone (drone.registro, drone.modelo, drone.latLong);
-        d.horasVoada= drone.horasVoada;
+        d.horasvoada= drone.horasvoada;
         d.base = drone.base;
         return d;
     }

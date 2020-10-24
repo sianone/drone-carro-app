@@ -18,8 +18,9 @@ export class BarraTitulo extends ElementoBase{
     getElementoString(){
         let links = '';
         for (let link of this.links)
-            links += `<a class="mdl-navigation__link" 
-                href="${link.href}">${link.titulo}</a>`;
+            links += `<a class="mdl-navigation__link">
+                ${link.titulo}
+            </a>\n`;
 
         return `
             <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
